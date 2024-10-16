@@ -42,7 +42,8 @@ export default function SignUpOTP() {
             console.log(companyEmail)
 
             // const response = await fetch('http://localhost:8080/auth/verify-email', {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/verify-email`, {
+            // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/verify-email`, {
+                const response = await fetch('https://jobboard-eu2h.onrender.com/auth/verify-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -20,13 +20,15 @@ export default function JobListings() {
     const [jobs, setJobs] = useState<Job[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL
+
 
     useEffect(() => {
         const fetchJobs = async () => {
             try {
                 // const response = await fetch('http://localhost:8080/jobs/post-jobs', {
-                const response = await fetch(`${NEXT_PUBLIC_API_URL}/jobs/post-jobs`, {
+                // const response = await fetch(`${NEXT_PUBLIC_API_URL}/jobs/post-jobs`, {
+                const response = await fetch('https://jobboard-eu2h.onrender.com/jobs/post-jobs', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

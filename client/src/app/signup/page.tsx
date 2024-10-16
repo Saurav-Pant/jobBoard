@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { useRouter } from 'next/navigation';
 
 export default function SignUpPage() {
+    // const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
     const router = useRouter();
     const token = Cookies.get('token');
     const [formData, setFormData] = useState({
@@ -33,12 +34,14 @@ export default function SignUpPage() {
         }));
     };
 
+
     const handleSubmit = async (e: React.FormEvent) => {
-        const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
         e.preventDefault();
         try {
             // const response = await fetch('http://localhost:8080/auth/register', {
-            const response = await fetch(`${NEXT_PUBLIC_API_URL}/auth/register`, {
+            // const response = await fetch(`${NEXT_PUBLIC_API_URL}/auth/register`, {
+
+              const response = await fetch('https://jobboard-eu2h.onrender.com/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

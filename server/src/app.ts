@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import authRoutes from './routes/authRoutes';
 import jobRoutes from './routes/jobRoutes';
 import cors from 'cors';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());

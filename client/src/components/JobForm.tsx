@@ -39,7 +39,8 @@ export default function JobForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         try {
-            const jobResponse = await fetch('http://localhost:8080/jobs/post-jobs', {
+            // const jobResponse = await fetch('http://localhost:8080/jobs/post-jobs', {
+                const jobResponse = await fetch('https://jobboard-eu2h.onrender.com/jobs/post-jobs', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +63,9 @@ export default function JobForm() {
             const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL
 
             // const alertResponse = await fetch('http://localhost:8080/jobs/send-job-alerts', {
-            const alertResponse = await fetch(`${NEXT_PUBLIC_API_URL}/jobs/send-job-alerts`, {
+            // const alertResponse = await fetch(`${NEXT_PUBLIC_API_URL}/jobs/send-job-alerts`, {
+                const alertResponse = await fetch('https://jobboard-eu2h.onrender.com/jobs/send-job-alerts', {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
