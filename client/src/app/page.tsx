@@ -1,18 +1,13 @@
-"use client"
+import Hero from "@/app/(landing)/hero"
+import Features from "@/app/(landing)/Features"
 
-import React from 'react';
-import Cookies from 'js-cookie';
-import Dashboard from '../app/Dashboard/page';
-import Signup from '../app/signup/page';
-
-const Page = () => {
-    const token = Cookies.get('token');
-
-    return (
-        <div>
-            {token ? <Dashboard /> : <Signup />}
-        </div>
-    );
+export default function LandingPage() {
+  return (
+      <div className="min-h-screen bg-background text-foreground">
+        <main>
+          <Hero />
+          <Features />
+        </main>
+      </div>
+  )
 }
-
-export default Page;

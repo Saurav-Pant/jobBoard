@@ -18,6 +18,7 @@ model Company {
     verificationToken String?
     otp               String?
     otpExpires        DateTime?
+    password          String
     jobs              Job[]
 }
 

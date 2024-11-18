@@ -1,18 +1,20 @@
 import jwt from 'jsonwebtoken';
 import prisma from '../config/db';
 import { sendOTPEmail } from '../services/emailService';
+import bcrypt from 'bcrypt';
 
 const generateOTP = (): string => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
 export const register = async (req: any, res: any) => {
-    const { name, phone, companyName, companyEmail, employeeSize } = req.body;
+    const { name, phone, companyName, companyEmail, employeeSize, password } = req.body;
 
-    if (!name || !phone || !companyName || !companyEmail || !employeeSize) {
+    if (!name || !phone || !companyName || !companyEmail || !employeeSize || !password) {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
     const otp = generateOTP();
     const otpExpires = new Date(Date.now() + 15 * 60 * 1000);
 
@@ -24,6 +26,7 @@ export const register = async (req: any, res: any) => {
           companyName,
           companyEmail,
           employeeSize: Number(employeeSize),
+          password: hashedPassword,
           otp,
           otpExpires
         }
@@ -51,7 +54,7 @@ export const register = async (req: any, res: any) => {
 };
 
 export const login = async (req: any, res: any) => {
-    const { email } = req.body;
+    const { email, password } = req.body;
     const company = await prisma.company.findUnique({ where: { companyEmail: email } });
 
     if (!company) {
@@ -62,8 +65,17 @@ export const login = async (req: any, res: any) => {
         return res.status(403).json({ message: 'Email not verified' });
     }
 
+    if (!company.password) {
+        return res.status(400).json({ message: 'Password not set for this company' });
+    }
+    const isPasswordValid = await bcrypt.compare(password, company.password);
+    if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Invalid password' });
+    }
+
     const token = jwt.sign({ id: company.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
-    res.json({ token });
+    res.json({ token, email });
+    console.log('Login successful:', company.companyEmail,token);
 };
 
 export const verifyEmail = async (req: any, res: any) => {

@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { DM_Sans } from 'next/font/google';
 import { Toaster } from "@/components/ui/toaster";
+import Navbar from "@/components/Navbar";
 const dmSans = DM_Sans({ weight: ['400'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
                 className={`${dmSans.className} antialiased`}
             >
                 <Toaster />
+                <Navbar />
                 {children}
             </body>
         </html>
