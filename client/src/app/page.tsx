@@ -1,12 +1,12 @@
-import Hero from "@/app/(landing)/hero"
-import Features from "@/app/(landing)/Features"
+import Features from "@/components/Features";
+import Hero from "@/components/hero";
 
 export default function LandingPage() {
   return (
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen ">
         <main>
           <Hero />
-          <Features />
+          <Features/>
         </main>
       </div>
   )
