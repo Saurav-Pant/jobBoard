@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, WineOff } from "lucide-react"
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import {
@@ -16,7 +16,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button" 
+import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -66,8 +66,6 @@ const Navbar = () => {
                             </button>
                             {isProfileOpen && (
                                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-                                    <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>
-                                    <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</Link>
                                     <button
                                         onClick={handleLogout}
                                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

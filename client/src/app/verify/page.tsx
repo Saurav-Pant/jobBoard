@@ -23,8 +23,10 @@ export default function SignUpOTP() {
         }
     })
 
+
     useEffect(() => {
         if (emailVerified || mobileVerified) {
+            Cookies.set('verified', emailVerified.toString())
             const timer = setTimeout(() => {
                 router.push('/Dashboard')
             }, 3000)
@@ -62,6 +64,7 @@ export default function SignUpOTP() {
                     title: "Email Verified",
                     description: "Your email has been successfully verified.",
                 })
+                // window.location.reload();
             } else {
                 toast({
                     title: "Verification Failed",

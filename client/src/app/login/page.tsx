@@ -59,6 +59,7 @@ export default function LoginPage() {
             Cookies.set('companyEmail', data.email);
 
             router.push('/Dashboard');
+            window.location.reload();
         } catch (error: any) {
             console.error('Error during login:', error.message);
         } finally {

@@ -13,6 +13,7 @@ import { ArrowRight, Building, Mail, Phone, User, Users, Lock } from 'lucide-rea
 export default function SignUpPage() {
     const router = useRouter();
     const token = Cookies.get('token');
+    const verified = Cookies.get('verified');
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -24,11 +25,11 @@ export default function SignUpPage() {
 
     const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     if (token) {
-    //         router.push('/Dashboard');
-    //     }
-    // }, [token, router]);
+    useEffect(() => {
+        if (verified) {
+            router.push('/Dashboard');
+        }
+    }, [token, router]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

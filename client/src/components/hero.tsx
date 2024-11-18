@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
 import { Mail, ArrowRight, CheckCircle } from 'lucide-react'
+import Cookies from 'js-cookie'
 
 export default function Hero() {
   const [email, setEmail] = useState('')
+  const token = Cookies.get('token')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,11 +29,19 @@ export default function Hero() {
             <p className="text-xl text-muted-foreground">
               Effortlessly distribute job openings to thousands of potential candidates with just a few clicks.
             </p>
-            <Link href="/signup" className="inline-block">
-              <Button type="submit" size="lg">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            {token ? (
+              <Link href="/Dashboard" className="inline-block">
+                <Button type="button" size="lg">
+                  Go to Dashboard <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            ) : (
+              <Link href="/signup" className="inline-block">
+                <Button type="submit" size="lg">
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            )}
             <div className="flex items-center gap-8 text-sm text-muted-foreground">
               <span className="flex items-center">
                 <CheckCircle className="mr-2 h-4 w-4 text-primary" /> Free 14-day trial
