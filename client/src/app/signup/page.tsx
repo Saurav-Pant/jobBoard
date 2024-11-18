@@ -24,11 +24,11 @@ export default function SignUpPage() {
 
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (token) {
-            router.push('/Dashboard');
-        }
-    }, [token, router]);
+    // useEffect(() => {
+    //     if (token) {
+    //         router.push('/Dashboard');
+    //     }
+    // }, [token, router]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

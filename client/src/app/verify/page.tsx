@@ -105,15 +105,7 @@ export default function SignUpOTP() {
     }
 
     return (
-        <div className="min-h-screen bg-white flex flex-col">
-            <header className="flex justify-between items-center p-4">
-                <div className="flex items-center">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full mr-2"></div>
-                    <span className="text-xl font-semibold">Covette</span>
-                </div>
-                <a href="#" className="text-gray-600 hover:text-gray-800">Contact</a>
-            </header>
-
+        <div className="min-h-[80vh] bg-white flex flex-col">
             <main className="flex-grow flex items-center justify-center px-4 py-8">
                 <div className="w-full max-w-6xl flex flex-col lg:flex-row justify-center items-center">
                     <div className="w-full lg:w-1/2 lg:pr-8 flex justify-center items-center mb-8 lg:mb-0">
